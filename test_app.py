@@ -20,14 +20,14 @@ class CastingAgencyCase(unittest.TestCase):
         'postgres', '123', 'localhost:5432', self.database_name)
         setup_db(self.app, self.database_path)
 
-        #self.assistance_token = 'Bearer' + os.environ['assistant']
-        #self.director_token = 'Bearer' + os.environ['assistant']
-        #self.producer_token = 'Bearer' + os.environ['assistant']
+        #self.assistance_token = 'Bearer ' + os.environ['assistant']
+        #self.director_token = 'Bearer ' + os.environ['assistant']
+        #self.producer_token = 'Bearer ' + os.environ['assistant']
 
 
-        self.assistance_token = 'Bearer' + str(os.getenv('assistant'))
-        self.director_token = 'Bearer' + str(os.getenv('director'))
-        self.producer_token = 'Bearer' + str(os.getenv('producer'))
+        self.assistance_token = 'Bearer ' + str(os.getenv('assistant'))
+        self.director_token = 'Bearer ' + str(os.getenv('director'))
+        self.producer_token = 'Bearer ' + str(os.getenv('producer'))
 
         self.assistance_header = {'Authorization': self.assistance_token}
         self.director_header = {'Authorization':self.director_token}
@@ -79,7 +79,7 @@ class CastingAgencyCase(unittest.TestCase):
         self.assertEqual(data['message'], 'resource not found')
     
     def test_delete_actor(self):
-        res = self.client().delete('/actors/3', headers=self.producer_header)
+        res = self.client().delete('/actors/18', headers=self.producer_header)
         data = json.loads(res.data)
         self.assertEqual(res.status_code, 200)
         self.assertEqual(data['success'], True)
@@ -101,9 +101,8 @@ class CastingAgencyCase(unittest.TestCase):
         self.assertEqual(data['message'], 'unprocessable')
     
     def test_delete_movies(self):
-        res = self.client().delete('/movies/2', headers=self.producer_header)
+        res = self.client().delete('/movies/29', headers=self.producer_header)
         data = json.loads(res.data)
-        #actor = Actor.query.filter(Actor.id == 2).one_or_none()
         self.assertEqual(res.status_code, 200)
         self.assertEqual(data['success'], True)
         
@@ -139,7 +138,7 @@ class CastingAgencyCase(unittest.TestCase):
        self.assertEqual(data['message'], 'bad request')
 
     def test_patch_actor(self):
-        res = self.client().patch('/actors/3', json={'age':22}, headers=self.producer_header)
+        res = self.client().patch('/actors/13', json={'age':22}, headers=self.producer_header)
         data = json.loads(res.data)
         self.assertEqual(res.status_code,200)
         self.assertEqual(data['success'],True)
@@ -152,7 +151,7 @@ class CastingAgencyCase(unittest.TestCase):
         self.assertEqual(data['message'], 'resource not found')
 
     def test_patch_movie(self):
-        res = self.client().patch('/movies/25', json={'title':'law abiding citizen'},headers=self.producer_header)
+        res = self.client().patch('/movies/1', json={'title':'law abiding citizen'},headers=self.producer_header)
         data = json.loads(res.data)
         self.assertEqual(res.status_code,200)
         self.assertEqual(data['success'],True)
