@@ -49,7 +49,6 @@ class CastingAgencyCase(unittest.TestCase):
             #self.db.create_all()
 
         self.new_actor = {
-            'id': 5,
             'name': 'Emilia Clark',
             'age': 33,
             'gender': 'female',

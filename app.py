@@ -81,11 +81,11 @@ def create_app(test_config=None):
     @requires_auth('post:actors')
     def Post_Actor(payload):
         body = request.get_json()
-
+        
         new_name = body.get('name', None)
         new_age = body.get('age', None)
         new_gender = body.get('gender', None)
-
+ 
         if new_name is None or new_age is None or new_gender is None:
             abort(400)
 
@@ -101,7 +101,6 @@ def create_app(test_config=None):
     def Post_Movie(payload):
 
         body = request.get_json()
-
         new_title = body.get('title', None)
         new_release_date = body.get('release_date', None)
         new_actor_id = body.get('actor_id', None)
