@@ -142,34 +142,22 @@ Setting the `FLASK_APP` variable to `app.py` file to find the application.
 `{
     "actors": [
         {
-            "age": 22,
+            "age": 33,
             "gender": "female",
             "id": 1,
-            "name": "omnia"
+            "name": "Emilia Clark"
         },
         {
-            "age": 22,
-            "gender": "female",
+            "age": 50,
+            "gender": "male",
             "id": 2,
-            "name": "arwa"
+            "name": "Gerard Butler"
         },
         {
             "age": 22,
             "gender": "female",
             "id": 3,
-            "name": "dina"
-        },
-        {
-            "age": 21,
-            "gender": "female",
-            "id": 4,
-            "name": "eman"
-        },
-        {
-            "age": 22,
-            "gender": "female",
-            "id": 5,
-            "name": "aya"
+            "name": "Omnia Lashen"
         }
     ],
     "success": true
@@ -183,29 +171,34 @@ Setting the `FLASK_APP` variable to `app.py` file to find the application.
 `{
     "movies": [
         {
+            "actor_id": 2,
             "id": 1,
-            "release_date": "Thu, 20 Jan 2000 00:00:00 GMT",
+            "release_date": "Sun, 02 Feb 2020 00:00:00 GMT",
             "title": "inception"
         },
         {
+            "actor_id": 1,
             "id": 2,
-            "release_date": "Thu, 20 Jan 2000 00:00:00 GMT",
-            "title": "inception2"
+            "release_date": "Tue, 03 Mar 2020 00:00:00 GMT",
+            "title": "the impossiple"
         },
         {
+            "actor_id": 2,
             "id": 3,
-            "release_date": "Tue, 30 Nov 2010 00:00:00 GMT",
-            "title": "law abiding citizen"
+            "release_date": "Sat, 04 Apr 2020 00:00:00 GMT",
+            "title": "law abiding citic=zen"
         },
         {
+            "actor_id": 3,
             "id": 4,
-            "release_date": "Tue, 30 Nov 2010 00:00:00 GMT",
-            "title": "law abiding citizen2"
+            "release_date": "Mon, 04 May 2020 00:00:00 GMT",
+            "title": "aquamarine"
         },
         {
+            "actor_id": 3,
             "id": 5,
-            "release_date": "Wed, 10 Jun 2020 00:00:00 GMT",
-            "title": "greenland"
+            "release_date": "Mon, 04 May 2020 00:00:00 GMT",
+            "title": "aquamarine"
         }
     ],
     "success": true
@@ -214,86 +207,93 @@ Setting the `FLASK_APP` variable to `app.py` file to find the application.
 #### POST '/actors'
  - General
     - Returns list of actors objects after adding new one, and value of success.
-- Sample: curl --location --request POST 'http://127.0.0.1:5000/actors' \ --header 'Authorization: Bearer $TOKEN_VALUE' \ --header 'Content-Type: application/json' \ --data-raw '{"name" : "omnia","age" : 23,"gender":"female"}'
+- Sample: curl --location --request POST 'http://127.0.0.1:5000/actors' \ --header 'Authorization: Bearer $TOKEN_VALUE' \ --header 'Content-Type: application/json' \ --data-raw ' {
+    "name": "dina",
+    "age": 22,
+    "gender": "female"
+}'
 
 `{
     "actors": [
         {
-            "age": 22,
+            "age": 33,
             "gender": "female",
             "id": 1,
-            "name": "omnia"
+            "name": "Emilia Clark"
         },
         {
-            "age": 22,
-            "gender": "female",
+            "age": 50,
+            "gender": "male",
             "id": 2,
-            "name": "arwa"
+            "name": "Gerard Butler"
         },
         {
             "age": 22,
             "gender": "female",
             "id": 3,
-            "name": "dina"
+            "name": "Omnia Lashen"
         },
         {
-            "age": 21,
-            "gender": "female",
+            "age": 23,
+            "gender": "male",
             "id": 4,
-            "name": "eman"
+            "name": "Muhammad"
         },
         {
             "age": 22,
             "gender": "female",
             "id": 5,
-            "name": "aya"
-        },
-        {
-            "age": 23,
-            "gender": "female",
-            "id": 6,
-            "name": "omnia"
-        }
+            "name": "dina"
+}
     ],
     "success": true
 }`
 #### POST '/movies'
  - General
     - Returns list of movies objects after adding new one, and value of success.
-- Sample: curl --location --request POST 'http://127.0.0.1:5000/movies' \ --header 'Authorization: Bearer $TOKEN_VALUE' \ --header 'Content-Type: application/json' \ --data-raw '{"title" : "the impossible","release_date" : "2/2/2020","movie_id":2}'
+- Sample: curl --location --request POST 'http://127.0.0.1:5000/movies' \ --header 'Authorization: Bearer $TOKEN_VALUE' \ --header 'Content-Type: application/json' \ --data-raw '{
+ "title":"greenland",
+ "release_date":"9/5/2020",
+ "actor_id":4
+}'
 
 `{
-    {
     "movies": [
         {
+            "actor_id": 2,
             "id": 1,
-            "release_date": "Thu, 20 Jan 2000 00:00:00 GMT",
+            "release_date": "Sun, 02 Feb 2020 00:00:00 GMT",
             "title": "inception"
         },
         {
+            "actor_id": 1,
             "id": 2,
-            "release_date": "Thu, 20 Jan 2000 00:00:00 GMT",
-            "title": "inception2"
+            "release_date": "Tue, 03 Mar 2020 00:00:00 GMT",
+            "title": "the impossiple"
         },
         {
+            "actor_id": 2,
             "id": 3,
-            "release_date": "Tue, 30 Nov 2010 00:00:00 GMT",
-            "title": "law abiding citizen"
+            "release_date": "Sat, 04 Apr 2020 00:00:00 GMT",
+            "title": "law abiding citic=zen"
         },
         {
+            "actor_id": 3,
             "id": 4,
-            "release_date": "Tue, 30 Nov 2010 00:00:00 GMT",
-            "title": "law abiding citizen2"
+            "release_date": "Mon, 04 May 2020 00:00:00 GMT",
+            "title": "aquamarine"
         },
         {
+            "actor_id": 3,
             "id": 5,
-            "release_date": "Wed, 10 Jun 2020 00:00:00 GMT",
-            "title": "greenland"
+            "release_date": "Mon, 04 May 2020 00:00:00 GMT",
+            "title": "aquamarine"
         },
         {
-            "id": 47,
-            "release_date": "Sun, 02 Feb 2020 00:00:00 GMT",
-            "title": "the impossible"
+            "actor_id": 4,
+            "id": 6,
+            "release_date": "Sat, 09 May 2020 00:00:00 GMT",
+            "title": "greenland"
         }
     ],
     "success": true
@@ -302,61 +302,55 @@ Setting the `FLASK_APP` variable to `app.py` file to find the application.
 #### DELETE '/actors'
  - General
     - Returns the id of the deleted actor, and value of success.
-- Sample: curl --request DELETE 'http://127.0.0.1:5000/actors/6' \ --header 'Authorization: Bearer $TOKEN_VALUE''
+- Sample: curl --request DELETE 'http://127.0.0.1:5000/actors/5' \ --header 'Authorization: Bearer $TOKEN_VALUE''
 
 `{
-    "deleted": 6,
+    "deleted": 5,
     "success": true
 }`
 
 #### DELETE '/movies'
  - General
     - Returns the id of the deleted movie, and value of success.
-- Sample: curl --request DELETE 'http://127.0.0.1:5000/movies/4' \ --header 'Authorization: Bearer $TOKEN_VALUE''
+- Sample: curl --request DELETE 'http://127.0.0.1:5000/movies/5' \ --header 'Authorization: Bearer $TOKEN_VALUE''
 
 `{
-{
-    "deleted": 4,
+    "deleted": 5,
     "success": true
-}
 }`
 
 #### PATCH '/actors'
  - General
     - Returns list of actors after updating the required actor, and value of success.
-- Sample: curl --location --request PATCH 'http://127.0.0.1:5000/actors/5' \ --header 'Authorization: Bearer $TOKEN_VALUE' \ --header 'Content-Type: application/json' \
+- Sample: curl --location --request PATCH 'http://127.0.0.1:5000/actors/5' \ --header 'Authorization: Bearer $TOKEN_VALUE' \ --header 'Content-Type: application/json' --data-raw '{
+    "age":22
+}'
 
 `{
     "actors": [
         {
-            "age": 22,
+            "age": 33,
             "gender": "female",
             "id": 1,
-            "name": "omnia"
+            "name": "Emilia Clark"
         },
         {
-            "age": 22,
-            "gender": "female",
+            "age": 50,
+            "gender": "male",
             "id": 2,
-            "name": "arwa"
+            "name": "Gerard Butler"
         },
         {
             "age": 22,
             "gender": "female",
             "id": 3,
-            "name": "dina"
+            "name": "Omnia Lashen"
         },
         {
-            "age": 21,
-            "gender": "female",
+            "age": 22,
+            "gender": "male",
             "id": 4,
-            "name": "eman"
-        },
-        {
-            "age": 23,
-            "gender": "female",
-            "id": 5,
-            "name": "aya"
+            "name": "Muhammad"
         }
     ],
     "success": true
@@ -365,34 +359,39 @@ Setting the `FLASK_APP` variable to `app.py` file to find the application.
 #### PATCH '/movies'
  - General
     - Returns list of movies after updating the required actor, and value of success.
-- Sample: curl --location --request PATCH 'http://127.0.0.1:5000/movies/5' \ --header 'Authorization: Bearer $TOKEN_VALUE' \ --header 'Content-Type: application/json' \
+- Sample: curl --location --request PATCH 'http://127.0.0.1:5000/movies/3' \ --header 'Authorization: Bearer $TOKEN_VALUE' \ --header 'Content-Type: application/json' --data-raw ''
 
 `{
     "movies": [
         {
+            "actor_id": 2,
             "id": 1,
-            "release_date": "Thu, 20 Jan 2000 00:00:00 GMT",
+            "release_date": "Sun, 02 Feb 2020 00:00:00 GMT",
             "title": "inception"
         },
         {
+            "actor_id": 1,
             "id": 2,
-            "release_date": "Thu, 20 Jan 2000 00:00:00 GMT",
-            "title": "inception2"
+            "release_date": "Tue, 03 Mar 2020 00:00:00 GMT",
+            "title": "the impossiple"
         },
         {
+            "actor_id": 2,
             "id": 3,
-            "release_date": "Tue, 30 Nov 2010 00:00:00 GMT",
+            "release_date": "Sat, 04 Apr 2020 00:00:00 GMT",
             "title": "law abiding citizen"
         },
         {
-            "id": 5,
-            "release_date": "Wed, 10 Jun 2020 00:00:00 GMT",
-            "title": "greenland"
+            "actor_id": 3,
+            "id": 4,
+            "release_date": "Mon, 04 May 2020 00:00:00 GMT",
+            "title": "aquamarine"
         },
         {
-            "id": 47,
-            "release_date": "Sun, 02 Feb 2020 00:00:00 GMT",
-            "title": "the impossible"
+            "actor_id": 4,
+            "id": 6,
+            "release_date": "Sat, 09 May 2020 00:00:00 GMT",
+            "title": "greenland"
         }
     ],
     "success": true
