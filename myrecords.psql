@@ -75,7 +75,7 @@ CREATE TABLE public.movies (
     id integer NOT NULL,
     title character varying,
     release_date timestamp without time zone,
-    movie_id integer NOT NULL
+    actor_id integer NOT NULL
 );
 
 
@@ -122,11 +122,10 @@ ALTER TABLE ONLY public.movies ALTER COLUMN id SET DEFAULT nextval('public.movie
 --
 
 COPY public.actors (id, name, age, gender) FROM stdin;
-1	omnia	22	female
-2	arwa	22	female
-3	dina	22	female
-4	eman	21	female
-5	aya	22	female
+1	Emilia Clark	33	female
+2	Gerard Butler	50	male
+3	Omnia Lashen	22	female
+4	Muhammad	22	male
 \.
 
 
@@ -135,7 +134,7 @@ COPY public.actors (id, name, age, gender) FROM stdin;
 --
 
 COPY public.alembic_version (version_num) FROM stdin;
-0da1bd33c3e3
+f737b40e06e7
 \.
 
 
@@ -143,12 +142,12 @@ COPY public.alembic_version (version_num) FROM stdin;
 -- Data for Name: movies; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.movies (id, title, release_date, movie_id) FROM stdin;
-1	inception	2000-01-20 00:00:00	1
-2	inception2	2000-01-20 00:00:00	2
-3	law abiding citizen	2010-11-30 00:00:00	3
-4	law abiding citizen2	2010-11-30 00:00:00	4
-5	greenland	2020-06-10 00:00:00	5
+COPY public.movies (id, title, release_date, actor_id) FROM stdin;
+1	inception	2020-02-02 00:00:00	2
+2	the impossiple	2020-03-03 00:00:00	1
+4	aquamarine	2020-05-04 00:00:00	3
+6	greenland	2020-05-09 00:00:00	4
+3	law abiding citizen	2020-04-04 00:00:00	2
 \.
 
 
@@ -156,14 +155,14 @@ COPY public.movies (id, title, release_date, movie_id) FROM stdin;
 -- Name: actors_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.actors_id_seq', 1, false);
+SELECT pg_catalog.setval('public.actors_id_seq', 5, true);
 
 
 --
 -- Name: movies_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.movies_id_seq', 1, false);
+SELECT pg_catalog.setval('public.movies_id_seq', 6, true);
 
 
 --
@@ -191,11 +190,11 @@ ALTER TABLE ONLY public.movies
 
 
 --
--- Name: movies movies_movie_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- Name: movies movies_actor_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.movies
-    ADD CONSTRAINT movies_movie_id_fkey FOREIGN KEY (movie_id) REFERENCES public.actors(id);
+    ADD CONSTRAINT movies_actor_id_fkey FOREIGN KEY (actor_id) REFERENCES public.actors(id);
 
 
 --
