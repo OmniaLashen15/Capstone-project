@@ -46,7 +46,7 @@ class CastingAgencyCase(unittest.TestCase):
 
             # create all tables
 
-            self.db.create_all()
+            #self.db.create_all()
 
         self.new_actor = {
             'id': 5,
@@ -137,7 +137,7 @@ class CastingAgencyCase(unittest.TestCase):
 
     def test_post_movies(self):
         new_movie = {'title': 'greenland', 'release_date': '23/9/2020',
-                     'movie_id': 10}
+                     'actor_id': 10}
         res = self.client().post('/movies', json=new_movie,
                                  headers=self.producer_header)
         data = json.loads(res.data)

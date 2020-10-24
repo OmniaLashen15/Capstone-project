@@ -1,5 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
+
 import os
 from sqlalchemy import Column, String, Integer, DateTime, ForeignKey, \
     create_engine
@@ -21,7 +22,7 @@ def setup_db(app, database_path=database_path):
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     db.app = app
     db.init_app(app)
-    db.create_all()
+    #db.create_all()
 
 
     # migrate = Migrate(app, db)
@@ -33,17 +34,18 @@ class Movie(db.Model):
     id = Column(Integer, primary_key=True)
     title = Column(String)
     release_date = Column(DateTime)
-    movie_id = Column(Integer, ForeignKey('actors.id'), nullable=False)
+    actor_id = Column(Integer, ForeignKey('actors.id'), nullable=False)
 
     def __init__(
         self,
         title,
         release_date,
-        movie_id,
+        actor_id,
         ):
+
         self.title = title
         self.release_date = release_date
-        self.movie_id = movie_id
+        self.actor_id = actor_id
 
     def insert(self):
         db.session.add(self)
@@ -57,8 +59,12 @@ class Movie(db.Model):
         db.session.commit()
 
     def format(self):
-        return {'id': self.id, 'title': self.title,
-                'release_date': self.release_date}
+        return {
+            'id': self.id,
+            'title': self.title,
+            'release_date': self.release_date,
+            'actor_id': self.actor_id,
+            }
 
 
 class Actor(db.Model):
@@ -78,6 +84,7 @@ class Actor(db.Model):
         age,
         gender,
         ):
+
         self.name = name
         self.age = age
         self.gender = gender
